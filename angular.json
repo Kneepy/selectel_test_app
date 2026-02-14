@@ -26,6 +26,8 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "outputPath": "dist/selectel_test_app",
+            "baseHref": "/selectel_test_app/",
             "assets": [
               {
                 "glob": "**/*",
