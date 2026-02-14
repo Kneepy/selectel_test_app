@@ -29,7 +29,7 @@ jobs:
               uses: peaceiris/actions-gh-pages@v3
               with:
                   personal_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-                  publish_dir: ./dist/selectel_test_app
+                  publish_dir: ./dist/selectel_test_app/browser
                   publish_branch: gh-pages
                   force_orphan: true
                   user_name: 'Kneepy'
