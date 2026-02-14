@@ -3,24 +3,21 @@ name: Deploy to GitHub Pages
 on:
     push:
         branches:
-            - main
-    workflow_dispatch:
-
-permissions:
-    contents: write
-    pages: write
-    id-token: write
+            - master
 
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-latest
+
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v3
 
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v3
               with:
                   node-version: '20'
+                  cache: 'npm'
 
             - name: Install dependencies
               run: npm ci
@@ -28,23 +25,12 @@ jobs:
             - name: Build
               run: npm run build -- --configuration production
 
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: ./dist/selectel_test_app
-
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-
-        permissions:
-            pages: write
-            id-token: write
-
-        steps:
             - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  personal_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+                  publish_dir: ./dist/selectel_test_app
+                  publish_branch: gh-pages
+                  force_orphan: true
+                  user_name: 'Kneepy'
+                  user_email: 'ilyafamin4@gmail.com'
