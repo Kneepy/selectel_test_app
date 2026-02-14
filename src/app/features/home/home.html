@@ -1,0 +1,22 @@
+<div class="home">
+    <app-header />
+
+    <div class="content">
+        <app-menu />
+
+        <div class="checkboxes">
+            @for (checkbox of checkboxes(); track checkbox.id) {
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <p-checkbox (onChange)="toggleCheckbox(checkbox.id, !checkbox.checked)" [binary]="true" size="large" />
+
+                        <div class="info">
+                            <span class="title">{{ checkbox.title }}</span>
+                            <span class="value">Value: {{ checkbox.value }}</span>
+                        </div>
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+</div>

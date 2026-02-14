@@ -1,0 +1,27 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+.home .content {
+  display: flex;
+  padding: 30px;
+}
+.home .content .checkboxes {
+  margin-left: 60px;
+}
+.home .content .checkboxes .checkbox {
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+.home .content .checkboxes .checkbox .info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.home .content .checkboxes .checkbox .info .value {
+  color: var(--p-primary-500);
+}
+
+/*# sourceMappingURL=home.css.map */
